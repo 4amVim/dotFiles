@@ -17,29 +17,41 @@ snippet [ "Math" wA
 endsnippet
 
 snippet int "integral"
-\int_{a$1}^{b$2} $0 
+\int_{${1:${VISUAL:from}}}^{${2:${VISUAL:to}}} $0 
 endsnippet
 
 snippet linf "lim inf" wA
-\text{lim inf }a_n
+\text{lim inf }
 endsnippet
 
 snippet lsup "lim sup" wA
-\text{lim sup }a_n
+\text{lim sup }
 endsnippet
 
 snippet mb "mathbb"
 \\mathbb{${1:${VISUAL:text}}}${0}
 endsnippet
 
-snippet inn "in naturals"
-\\forall ${1:${VISUAL:variable}} \\in \\mathbb{${2:${VISUAL:Set}}}${0} 
+snippet exists "there exits in "
+\\exists ${1:${VISUAL:variable}} \\in \\mathbb{${2:${VISUAL:set}}}${0} 
 endsnippet
 
-snippet an "sequence"
-$a_n$ 
+snippet every "for every in"
+\\forall ${1:${VISUAL:variable}} \\in \\mathbb{${2:${VISUAL:set}}}${0} 
+endsnippet
+
+snippet an "nth term of the sequence"
+$a_${1:${VISUAL:n}}  $ $0 
 endsnippet
 
 snippet t "enter text inside equation"
 \text{ $1 } $0
+endsnippet
+
+snippet parts "gonna divide the question up into chunks"
+\begin{enumerate}[label=\Roman*]
+	\item $1
+	\item $2
+	\item $3
+\end{enumerate}	$0
 endsnippet
