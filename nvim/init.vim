@@ -4,8 +4,6 @@
 " 	- Avoid using standard Vim directory names like 'plugin'
 call plug#begin(stdpath('data').'/plugged')
 
-
-
 "LaTeX Stuff
 Plug 'lervag/vimtex'
 let g:tex_flavor='latex'
@@ -29,6 +27,7 @@ autocmd Filetype tex setl updatetime=1000 "idk wut this
 let g:livepreview_previewer = 'open -a Skim' "or dis
 
 "Theming
+set cursorline
 Plug 'victorze/foo'
 syntax enable
 set number
@@ -57,12 +56,15 @@ endfunc
 call NumberToggle()
 
 "Folding
-set foldmethod=syntax
+"set foldmethod=syntax
+"Plug 'matze/vim-tex-fold'
+Plug 'konfekt/fastfold'
+let g:tex_fold_enabled =1
 
 "Airline 
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-let g:airline#extensions#tabline#enabled = 2
+"let g:airline#extensions#tabline#enabled = 2
 let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
@@ -72,6 +74,10 @@ let g:airline_left_sep = ' '
 let g:airline_left_alt_sep = '|'
 let g:airline_right_sep = ' '
 let g:airline_right_alt_sep = '|'
+let g:airline_powerline_fonts = 1
+
+"Git integration
+"Plug 'tpope/vim-fugitive'
 
 "Completion via deoplete
 Plug 'shougo/deoplete.nvim'
@@ -93,3 +99,7 @@ colorscheme onedark "hyper
 "let g:lightline = { 'colorscheme':'onedark'}
 ""Use deoplete with vimtex
 call deoplete#custom#var ('omni', 'input_patterns', { 'tex': g:vimtex#re#deoplete, 'r': '[^. *\t]\.\w*', })
+
+"Auto closing brackets
+"inoremap {<CR> {<CR>}<Esc>ko<tab>
+"inoremap (<CR> (<CR>)<Esc>ko<tab>
