@@ -5,7 +5,7 @@
 call plug#begin(stdpath('data').'/plugged')
 
 "LaTeX Stuff
-Plug 'lervag/vimtex'
+Plug 'lervag/vimtex' , { 'for':'tex'}
 let g:tex_flavor='latex'
 let g:vimtex_view_method='skim'
 let g:vimtex_quickfix_mode=0
@@ -14,6 +14,7 @@ let g:tex_conceal='abdmg'
 let g:vimtex_compiler_progname='nvr'
 let g:vimtex_fold_enabled = 1 "Folding
 autocmd BufNewFile *.tex 0read ~/.config/nvim/templates/skeleton.tex  "tex template
+
 
 ""Snippets
 Plug 'sirver/ultisnips' | Plug 'honza/vim-snippets'
@@ -24,8 +25,8 @@ let g:UltiSnipsEditSplit="vertical"
 
 ""Live Preview
 Plug 'xuhdev/vim-latex-live-preview' , { 'for': 'tex' }
-autocmd Filetype tex setl updatetime=1000 "idk wut this
-let g:livepreview_previewer = 'open -a Skim' "or dis
+autocmd Filetype tex setl updatetime=1000 " setting update interval
+let g:livepreview_previewer = 'open -a Skim' "use Skim
 
 "Theming
 set cursorline
@@ -100,6 +101,7 @@ colorscheme onedark "hyper
 "let g:lightline = { 'colorscheme':'onedark'}
 ""Use deoplete with vimtex
 call deoplete#custom#var ('omni', 'input_patterns', { 'tex': g:vimtex#re#deoplete, 'r': '[^. *\t]\.\w*', })
+autocmd BufRead,BufNewFile *.tex :LLPTStartPreview  "Autostart Live preview on first write to tex file
 
 "Auto closing brackets
 "inoremap {<CR> {<CR>}<Esc>ko<tab>
