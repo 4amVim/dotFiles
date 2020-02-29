@@ -16,6 +16,18 @@ snippet [ "Math" wA
 \[ $1 \] $0
 endsnippet
 
+#General Math stuff
+
+snippet o "compose " wA
+\circ $0
+endsnippet
+
+snippet $ "close it" iA
+$ $1 $ $0
+endsnippet
+
+#Real Analysis
+
 snippet int "integral"
 \int_{${1:${VISUAL:from}}}^{${2:${VISUAL:to}}} $0 
 endsnippet
@@ -63,3 +75,37 @@ snippet parts "gonna divide the question up into chunks"
 	\item $3
 \end{enumerate}	$0
 endsnippet
+
+snippet mathcali "mathcaligraphy" wA 
+$\mathcal{$1}$ $0
+endsnippet
+
+snippet conds "conditions"
+
+\begin{enumerate}[label=(\roman*)]
+	\item $0
+\end{enumerate}
+
+endsnippet
+
+#Category THeory Snippets
+
+snippet Ac "category A" iA
+\mathcal{A} $0
+endsnippet
+snippet Bc "category B" iA
+\mathcal{B} $0
+endsnippet
+
+
+snippet fc "morphism between A and B" iA
+\mathcal{A}(A,B) $0
+endsnippet
+
+snippet 1_A "identity on A" iA
+1_A \in \mathcal{A}(A,A)
+endsnippet
+snippet 1_B "identity on B" iA
+1_B \in \mathcal{A}(B,B)
+endsnippet
+
