@@ -15,6 +15,8 @@ let g:vimtex_compiler_progname='nvr'
 let g:vimtex_fold_enabled = 1 "Folding
 autocmd BufNewFile *.tex 0read ~/.config/nvim/templates/skeleton.tex  "tex template
 
+"Nertree
+"Plug 'preservim/nerdtree'
 
 ""Snippets
 Plug 'sirver/ultisnips' | Plug 'honza/vim-snippets'
@@ -24,7 +26,7 @@ let g:UltiSnipsJumpBackwadTrigger = '<tab>'
 let g:UltiSnipsEditSplit="vertical"
 
 ""Live Preview
-Plug 'xuhdev/vim-latex-live-preview' , { 'for': 'tex' }
+Plug 'xuhdev/vim-latex-live-preview' ", { 'for': 'tex' }
 autocmd Filetype tex setl updatetime=1000 " setting update interval
 let g:livepreview_previewer = 'open -a Skim' "use Skim
 
@@ -56,6 +58,8 @@ function! NumberToggle()
   endif
 endfunc
 call NumberToggle()
+"autosave
+set autowrite
 
 "Folding
 "set foldmethod=syntax
@@ -63,7 +67,7 @@ call NumberToggle()
 Plug 'konfekt/fastfold'
 let g:tex_fold_enabled =1
 
-"Airline 
+"Airline
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 "let g:airline#extensions#tabline#enabled = 2
@@ -86,8 +90,8 @@ Plug 'shougo/deoplete.nvim'
 let g:deoplete#enable_at_startup=1 "Use Deoplete
 
 "More natural splits
-"set splitbelow          " Horizontal split below current.
-"set splitright          " Vertical split to right of current.
+set splitbelow          " Horizontal split below current.
+set splitright          " Vertical split to right of current.
 
 
 " Multiple Plug commands can be written in a single line using | separators
@@ -101,7 +105,12 @@ colorscheme onedark "hyper
 "let g:lightline = { 'colorscheme':'onedark'}
 ""Use deoplete with vimtex
 call deoplete#custom#var ('omni', 'input_patterns', { 'tex': g:vimtex#re#deoplete, 'r': '[^. *\t]\.\w*', })
-autocmd BufRead,BufNewFile *.tex :LLPTStartPreview  "Autostart Live preview on first write to tex file
+"autocmd BufReadPost,BufNewFile *.tex :LLPStartPreview<CR>  "Autostart Live preview on first write to tex file
+"autocmd BufEnter,BufNewFile *.tex :VimtexCompile<CR> "Autostart Live preview on first write to tex file
+
+"augroup vimtex_config
+"	autocmd User VimtexEventInitPost VimtexCompile
+"augroup END
 
 "Auto closing brackets
 "inoremap {<CR> {<CR>}<Esc>ko<tab>
