@@ -18,12 +18,40 @@ endsnippet
 
 #General Math stuff
 
-snippet o "compose " wA
+snippet o "compose "
 \circ $0
 endsnippet
 
 snippet $ "close it" iA
 $ $1 $ $0
+endsnippet
+
+snippet conds "conditions"
+\begin{enumerate}[label=(\roman*)]
+	\item $0
+\end{enumerate}
+endsnippet
+
+snippet every "for every in"
+\\forall ${1:${VISUAL:variable}} \\in \\mathbb{${2:${VISUAL:set}}}${0} 
+endsnippet
+
+snippet example "example environment" bA
+
+\begin{example}{\textbf{${1:${VISUAL:Example Name}}}} %{{{ $1		Example
+${2:${VISUAL:Content}}
+\end{example}
+$0
+endsnippet
+
+snippet % "comment" wA
+%{{{ ${1:${VISUAL:Name}}		${2:${VISUAL:Type}}$0
+endsnippet
+
+snippet enumi "enumerate i ii" bA
+\begin{enumerate}[label=\roman*]
+	\item $1 
+\end{enumerate}$0
 endsnippet
 
 #Real Analysis
@@ -56,10 +84,6 @@ snippet exist "there exits in "
 \\exists ${1:${VISUAL:variable}} \\in \\mathbb{${2:${VISUAL:set}}}${0} 
 endsnippet
 
-snippet every "for every in"
-\\forall ${1:${VISUAL:variable}} \\in \\mathbb{${2:${VISUAL:set}}}${0} 
-endsnippet
-
 snippet an "nth term of the sequence"
 $a_${1:${VISUAL:n}}  $ $0 
 endsnippet
@@ -80,14 +104,6 @@ snippet mathcali "mathcaligraphy" wA
 $\mathcal{$1}$ $0
 endsnippet
 
-snippet conds "conditions"
-
-\begin{enumerate}[label=(\roman*)]
-	\item $0
-\end{enumerate}
-
-endsnippet
-
 #Category THeory Snippets
 
 snippet Ac "category A" iA
@@ -102,10 +118,10 @@ snippet fc "morphism between A and B" iA
 \mathcal{A}(A,B) $0
 endsnippet
 
-snippet 1_A "identity on A" iA
+snippet 1_A "identity on A" i
 1_A \in \mathcal{A}(A,A)
 endsnippet
-snippet 1_B "identity on B" iA
+snippet 1_B "identity on B" i
 1_B \in \mathcal{A}(B,B)
 endsnippet
 
