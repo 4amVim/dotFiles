@@ -2,7 +2,12 @@
 "	Specify a directory for plugins
 " 	- For Neovim: stdpath('data') . '/plugged'
 " 	- Avoid using standard Vim directory names like 'plugin'
+
+"Basics
+nnoremap ; :
+
 call plug#begin(stdpath('data').'/plugged')
+
 
 "LaTeX Stuff
 Plug 'lervag/vimtex' , { 'for':'tex'}
@@ -58,6 +63,7 @@ function! NumberToggle()
   endif
 endfunc
 call NumberToggle()
+
 "autosave
 set autowrite
 
