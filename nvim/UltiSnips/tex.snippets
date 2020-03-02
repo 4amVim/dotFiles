@@ -36,7 +36,7 @@ snippet every "for every in"
 \\forall ${1:${VISUAL:variable}} \\in \\mathbb{${2:${VISUAL:set}}}${0} 
 endsnippet
 
-snippet example "example environment" bA
+snippet ex "example environment" bA
 
 \begin{example}{\textbf{${1:${VISUAL:Example Name}}}} %{{{ $1		Example
 $2
@@ -44,6 +44,13 @@ $2
 $0
 endsnippet
 
+snippet defn "definition environment" bA
+
+\begin{definition}[${1:${VISUAL:Definition Name}}] %{{{ $1		Definition
+$2
+\end{definition}
+$0
+endsnippet
 snippet % "comment" wA
 %{{{ ${1:${VISUAL:Name}}		${2:${VISUAL:Type}}$0
 endsnippet
@@ -52,6 +59,12 @@ snippet enumi "enumerate i ii" bA
 \begin{enumerate}[label=\roman*]
 	\item $1 
 \end{enumerate}$0
+endsnippet
+
+snippet enuma "enumerate a b" bA
+	\begin{enumerate}[label=(\alph*)]
+		\item $1 
+	\end{enumerate}$0
 endsnippet
 
 #Real Analysis
