@@ -1,0 +1,12 @@
+
+snippet switch "OS specific stuff"
+
+if has('win32')
+${1:windows stuff} 
+elseif has('mac')
+${2:OS X} 
+elseif has('unix')
+${3:Arch} 
+endif
+endsnippet
+
