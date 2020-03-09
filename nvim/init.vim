@@ -12,7 +12,15 @@ call plug#begin(stdpath('data').'/plugged')
 "LaTeX Stuff
 Plug 'lervag/vimtex' , { 'for':'tex'}
 let g:tex_flavor='latex'
+
+if has('win32')
+"windows stuff 
+elseif has('mac')
 let g:vimtex_view_method='skim'
+elseif has('unix')
+let g:vimtex_view_method='zathura'
+endif
+
 let g:vimtex_quickfix_mode=0
 set conceallevel=1
 let g:tex_conceal='abdmg'
@@ -33,7 +41,13 @@ let g:UltiSnipsEditSplit="vertical"
 ""Live Preview
 Plug 'xuhdev/vim-latex-live-preview' ", { 'for': 'tex' }
 autocmd Filetype tex setl updatetime=1000 " setting update interval
+if has('win32')
+"windows stuff 
+elseif has('mac')
 let g:livepreview_previewer = 'open -a Skim' "use Skim
+elseif has('unix')
+let g:livepreview_previewer = 'zathura' "use Skim
+endif
 
 "Theming
 set cursorline
