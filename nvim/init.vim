@@ -13,7 +13,7 @@ call plug#begin(stdpath('data').'/plugged')
 Plug 'lervag/vimtex' , { 'for':'tex'}
 let g:tex_flavor='latex'
 
-elseif has('mac')
+if has('mac')
 let g:vimtex_view_method='skim'
 elseif has('unix')
 let g:vimtex_view_method='zathura'
@@ -39,7 +39,7 @@ let g:UltiSnipsEditSplit="vertical"
 ""Live Preview
 Plug 'xuhdev/vim-latex-live-preview' ", { 'for': 'tex' }
 autocmd Filetype tex setl updatetime=1000 " setting update interval
-elseif has('mac')
+if has('mac')
 let g:livepreview_previewer = 'open -a Skim' "use Skim
 elseif has('unix')
 let g:livepreview_previewer = 'zathura' "use Skim
