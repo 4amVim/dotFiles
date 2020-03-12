@@ -1,0 +1,7 @@
+set sandbox none
+
+#Display filename in the titlebar
+set window-title-basename true
+
+#Make resizing behave nicely
+set adjust-open "best-fit"
