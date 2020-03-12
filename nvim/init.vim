@@ -9,22 +9,24 @@ nnoremap ; :
 call plug#begin(stdpath('data').'/plugged')
 
 
-"LaTeX Stuff
+""LaTeX Stuff
+"Load the tex template if it's a new file
+autocmd BufNewFile *.tex 0read ~/.config/nvim/templates/skeleton.tex
+"Compilation
 Plug 'lervag/vimtex' , { 'for':'tex'}
 let g:tex_flavor='latex'
-
 if has('mac')
 let g:vimtex_view_method='skim'
 elseif has('unix')
 let g:vimtex_view_method='zathura'
 endif
-
 let g:vimtex_quickfix_mode=0
-set conceallevel=1
-let g:tex_conceal='abdmg'
 let g:vimtex_compiler_progname='nvr'
 let g:vimtex_fold_enabled = 1 "Folding
-autocmd BufNewFile *.tex 0read ~/.config/nvim/templates/skeleton.tex  "tex template
+"Better concealment
+Plug 'PietroPate/tex-conceal.vim', { 'for':'tex'}
+set conceallevel=2
+let g:tex_conceal='abdgms'
 
 "Nertree
 "Plug 'preservim/nerdtree'
@@ -78,10 +80,10 @@ call NumberToggle()
 set autowrite
 
 "Folding
-"set foldmethod=syntax
 "Plug 'matze/vim-tex-fold'
-Plug 'konfekt/fastfold'
-let g:tex_fold_enabled =1
+"Plug 'konfekt/fastfold'
+"set foldmethod=syntax
+"let g:tex_fold_enabled =1
 
 "Airline
 Plug 'vim-airline/vim-airline'
