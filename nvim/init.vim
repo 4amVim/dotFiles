@@ -1,7 +1,6 @@
-
 ""Essentials
 "Start commands with ; rather than :
-nnoremap ; :		 
+nnoremap ; :
 "Insert line below by Enter
 nmap <CR> o<Esc>
 "Relative numbering
@@ -14,6 +13,7 @@ function! NumberToggle()
   endif
 endfunc
 call NumberToggle()
+set number
 "Basics
 set cursorline "Highlight current line
 set showmatch "Show matching braces
