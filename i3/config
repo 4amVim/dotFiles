@@ -22,8 +22,16 @@ font pango:monospace 8
 # start Kitty terminal
 bindsym $mod+Return exec kitty
 
-#Dont focus new windows
-no_focus [window_role="pop-up"]
+#Dont focus new windows??
+#no_focus [window_role="pop-up"] 
+#focus_on_window_activation none
+
+#Open kitty on startup
+exec --no-startup-id kitty nvim 
+
+#Hide title-bar
+for_window [class="^.*"] border pixel 1
+new_window 1pixel
 ###########################################################################
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
