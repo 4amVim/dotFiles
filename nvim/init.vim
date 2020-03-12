@@ -1,13 +1,33 @@
+
+""Essentials
+"Start commands with ; rather than :
+nnoremap ; :		 
+"Insert line below by Enter
+nmap <CR> o<Esc>
+"Relative numbering
+function! NumberToggle()
+  if(&relativenumber == 1)
+    set nornu
+    set number
+  else
+    set rnu
+  endif
+endfunc
+call NumberToggle()
+"Basics
+set cursorline "Highlight current line
+set showmatch "Show matching braces
+set statusline+=%F "display filepath in status bar
+"More natural splits
+set splitbelow          " Horizontal split below current.
+set splitright          " Vertical split to right of current.
+
+""Vim-Plug
 "Set plugin directory for vim-plug:
 "	Specify a directory for plugins
 " 	- For Neovim: stdpath('data') . '/plugged'
 " 	- Avoid using standard Vim directory names like 'plugin'
-
-"Basics
-nnoremap ; :
-
 call plug#begin(stdpath('data').'/plugged')
-
 
 ""LaTeX Stuff
 "Load the tex template if it's a new file
@@ -23,13 +43,22 @@ endif
 let g:vimtex_quickfix_mode=0
 let g:vimtex_compiler_progname='nvr'
 let g:vimtex_fold_enabled = 1 "Folding
+"Live Preview
+Plug 'xuhdev/vim-latex-live-preview' ", { 'for': 'tex' }
+autocmd Filetype tex setl updatetime=1000 " setting update interval
+if has('mac')
+let g:livepreview_previewer = 'open -a Skim' "use Skim
+elseif has('unix')
+let g:livepreview_previewer = 'zathura' "use Skim
+endif
+"autocmd BufReadPost,BufNewFile *.tex :LLPStartPreview<CR>  "Autostart Live preview on first write to tex file
+"autocmd BufEnter,BufNewFile *.tex :VimtexCompile<CR> "Autostart Live preview on first write to tex file
 "Better concealment
 Plug 'PietroPate/tex-conceal.vim', { 'for':'tex'}
 set conceallevel=2
 let g:tex_conceal='abdgms'
 
-"Nertree
-"Plug 'preservim/nerdtree'
+autocmd BufWritePre *.tex %s/\s\+$//e "automatically remove white spaces on save (only on .tex files)
 
 ""Snippets
 Plug 'sirver/ultisnips' | Plug 'honza/vim-snippets'
@@ -38,56 +67,18 @@ let g:UltiSnipsJumpForwardTrigger = '<tab>'
 let g:UltiSnipsJumpBackwadTrigger = '<tab>'
 let g:UltiSnipsEditSplit="vertical"
 
-""Live Preview
-Plug 'xuhdev/vim-latex-live-preview' ", { 'for': 'tex' }
-autocmd Filetype tex setl updatetime=1000 " setting update interval
-if has('mac')
-let g:livepreview_previewer = 'open -a Skim' "use Skim
-elseif has('unix')
-let g:livepreview_previewer = 'zathura' "use Skim
-endif
+"Completion via deoplete
+Plug 'shougo/deoplete.nvim'
+let g:deoplete#enable_at_startup=1 "Use Deoplete
 
 "Theming
-set cursorline
-Plug 'victorze/foo'
-syntax enable
-set number
-set background=dark
-set showmatch "Show matching braces
-autocmd BufWritePre *.tex %s/\s\+$//e "automatically remove white spaces on save (only on .tex files)
-set statusline+=%F "display filepath in status bar
 Plug 'joshdick/onedark.vim' "OneDark Theme
-Plug 'sheerun/vim-polyglot' "Syntax Highlighting
-""lightline
-"Plug 'itchyny/lightline.vim'
 
 ""Startup screen
 Plug 'mhinz/vim-startify'
 
-""Boilerplate
-"Relative numbering
-function! NumberToggle()
-  if(&relativenumber == 1)
-    set nornu
-    set number
-  else
-    set rnu
-  endif
-endfunc
-call NumberToggle()
-
-"autosave
-set autowrite
-
-"Folding
-"Plug 'matze/vim-tex-fold'
-"Plug 'konfekt/fastfold'
-"set foldmethod=syntax
-"let g:tex_fold_enabled =1
-
 "Airline
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes'
 "let g:airline#extensions#tabline#enabled = 2
 let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline#extensions#tabline#left_sep = ' '
@@ -99,36 +90,25 @@ let g:airline_left_alt_sep = '|'
 let g:airline_right_sep = ' '
 let g:airline_right_alt_sep = '|'
 let g:airline_powerline_fonts = 1
+let g:airline_theme =   'onedark'
 
 "Git integration
 "Plug 'tpope/vim-fugitive'
 
-"Completion via deoplete
-Plug 'shougo/deoplete.nvim'
-let g:deoplete#enable_at_startup=1 "Use Deoplete
+"autosave??
+"set autowrite
 
-"More natural splits
-set splitbelow          " Horizontal split below current.
-set splitright          " Vertical split to right of current.
-
-
-" Multiple Plug commands can be written in a single line using | separators
-"Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+"Folding
+"Plug 'matze/vim-tex-fold'
+"Plug 'konfekt/fastfold'
+"set foldmethod=syntax
+"let g:tex_fold_enabled =1
 
 " Initialize plugin system
 call plug#end()
-let g:airline_theme =   'onedark' " 'xtermlight'
-syntax on
-colorscheme onedark "hyper
-"let g:lightline = { 'colorscheme':'onedark'}
-""Use deoplete with vimtex
-call deoplete#custom#var ('omni', 'input_patterns', { 'tex': g:vimtex#re#deoplete, 'r': '[^. *\t]\.\w*', })
-"autocmd BufReadPost,BufNewFile *.tex :LLPStartPreview<CR>  "Autostart Live preview on first write to tex file
-"autocmd BufEnter,BufNewFile *.tex :VimtexCompile<CR> "Autostart Live preview on first write to tex file
-
-"augroup vimtex_config
-"	autocmd User VimtexEventInitPost VimtexCompile
-"augroup END
+colorscheme onedark "Change theme
+syntax on "Turn on syntax highlighting
+call deoplete#custom#var ('omni', 'input_patterns', { 'tex': g:vimtex#re#deoplete, 'r': '[^. *\t]\.\w*', }) "Use deoplete with vimtex
 
 "Auto closing brackets
 "inoremap {<CR> {<CR>}<Esc>ko<tab>
