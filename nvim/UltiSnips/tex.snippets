@@ -22,7 +22,7 @@ snippet o "compose "
 \circ $0
 endsnippet
 
-snippet $ "close it" iA
+snippet $ "close it" i
 $ $1 $ $0
 endsnippet
 
@@ -116,7 +116,7 @@ snippet mathcali "mathcaligraphy" wA
 $\mathcal{$1}$ $0
 endsnippet
 
-#Category THeory Snippets
+#Category Theory Snippets
 
 snippet Ac "category A" iA
 \mathcal{A} $0
@@ -124,7 +124,6 @@ endsnippet
 snippet Bc "category B" iA
 \mathcal{B} $0
 endsnippet
-
 
 snippet fc "morphism between A and B" iA
 \mathcal{A}(A,B) $0
@@ -137,3 +136,11 @@ snippet 1_B "identity on B" i
 1_B \in \mathcal{A}(B,B)
 endsnippet
 
+#Commutative Diagrams
+snippet aro "Draw an arrow"
+\arrow{${1:direction}}{${2:map name}} $0
+endsnippet
+
+snippet arod "Draw diagonal arrow"
+\arrow[swap]{${1:direction}}{${2:map name}} $0
+endsnippet
