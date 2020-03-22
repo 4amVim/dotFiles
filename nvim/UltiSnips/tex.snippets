@@ -136,6 +136,16 @@ snippet 1_B "identity on B" i
 1_B \in \mathcal{A}(B,B)
 endsnippet
 
+snippet natran "Digram of Natural Transformation"
+\forall ${1:functions} \in \mathcal{${7:category1}}(${2:object1},${3:object2}), \text{ the square }
+\begin{tikzcd}
+${4:functor1}($2) \arrow[swap]{d}{${6:Natural transform}_$2} \arrow{r}{$4($1)} 
+	& $4($3) \arrow{d}{$6_$3}\\\\
+G($2) \arrow[swap]{r}{${5:functor2}($1)} 
+	& $5($3)
+\end{tikzcd}
+\text{ must commute }
+endsnippet
 #Commutative Diagrams
 snippet aro "Draw an arrow"
 \arrow{${1:direction}}{${2:map name}} $0
