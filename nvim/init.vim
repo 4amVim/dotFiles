@@ -35,22 +35,14 @@ autocmd BufNewFile *.tex 0read ~/.config/nvim/templates/skeleton.tex
 "Compilation
 Plug 'lervag/vimtex' , { 'for':'tex'}
 let g:tex_flavor='latex'
-if has('mac')
-let g:vimtex_view_method='skim'
-elseif has('unix')
 let g:vimtex_view_method='zathura'
-endif
 let g:vimtex_quickfix_mode=0
 let g:vimtex_compiler_progname='nvr'
 let g:vimtex_fold_enabled = 1 "Folding
 "Live Preview
 Plug 'xuhdev/vim-latex-live-preview' ", { 'for': 'tex' }
 autocmd Filetype tex setl updatetime=1000 " setting update interval
-if has('mac')
-let g:livepreview_previewer = 'open -a Skim' "use Skim
-elseif has('unix')
 let g:livepreview_previewer = 'zathura' "use Skim
-endif
 "autocmd BufReadPost,BufNewFile *.tex :LLPStartPreview<CR>  "Autostart Live preview on first write to tex file
 "autocmd BufEnter,BufNewFile *.tex :VimtexCompile<CR> "Autostart Live preview on first write to tex file
 "Better concealment
