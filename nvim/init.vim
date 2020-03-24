@@ -3,8 +3,6 @@
 nnoremap ; :
 "Insert line below by Enter
 nmap <CR> o<Esc>
-"Remap Tab to Esc
-imap <Tab> <Esc>
 "Relative numbering
 function! NumberToggle()
   if(&relativenumber == 1)
