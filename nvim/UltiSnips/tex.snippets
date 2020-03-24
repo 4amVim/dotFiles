@@ -32,8 +32,8 @@ snippet conds "conditions"
 \end{enumerate}
 endsnippet
 
-snippet every "for every in"
-\\forall ${1:${VISUAL:variable}} \\in \\mathbb{${2:${VISUAL:set}}}${0} 
+snippet every "for every in" i
+\\forall ${1:variable} \\in ${2:set}$0 
 endsnippet
 
 snippet ex "example environment" bA
@@ -93,7 +93,7 @@ snippet mb "mathbb"
 endsnippet
 
 snippet exist "there exits in "
-\\exists ${1:${VISUAL:variable}} \\in \\mathbb{${2:${VISUAL:set}}}${0} 
+\\exists ${1:variable} \\in \\mathbb{${2:set}}${0} 
 endsnippet
 
 snippet an "nth term of the sequence"
@@ -136,21 +136,37 @@ snippet 1_B "identity on B" i
 1_B \in \mathcal{A}(B,B)
 endsnippet
 
-snippet natran "Digram of Natural Transformation"
+snippet natran "Natural Transformation (The curvy digram)" i
+\begin{tikzcd}[row sep=large, column sep=huge]
+${1:category1} \arrow[r, bend left=50, "${3:functor1}"{name=U, below}]
+\arrow[r, bend right = 50, "${4:functor2}"{name=D, above}]
+	& ${2:category2}
+\arrow[Rightarrow, from=U , to=D, "${5:natural transform}"]
+\end{tikzcd}
+endsnippet
+
+snippet defnatran "Definition digram of Natural Transformation" i
 \forall ${1:functions} \in \mathcal{${7:category1}}(${2:object1},${3:object2}), \text{ the square }
 \begin{tikzcd}
 ${4:functor1}($2) \arrow[swap]{d}{${6:Natural transform}_$2} \arrow{r}{$4($1)} 
 	& $4($3) \arrow{d}{$6_$3}\\\\
-G($2) \arrow[swap]{r}{${5:functor2}($1)} 
+$5($2) \arrow[swap]{r}{${5:functor2}($1)} 
 	& $5($3)
 \end{tikzcd}
 \text{ must commute }
 endsnippet
 #Commutative Diagrams
-snippet aro "Draw an arrow"
+
+snippet tikzcd "big digrams" i
+\begin{tikzcd}[row sep=large, column sep=huge]
+	$1 & $2 & $3 
+\end{tikzcd}$0
+endsnippet
+
+snippet aro "Draw an arrow" i
 \arrow{${1:direction}}{${2:map name}} $0
 endsnippet
 
-snippet arod "Draw diagonal arrow"
-\arrow[swap]{${1:direction}}{${2:map name}} $0
+snippet arobend "Draw bent arrow" i
+\arrow[bend ${1:left or right}= ${2:how much tho ? 20? 30?},swap]{${3:direction}}{${4:map name}} $0
 endsnippet
