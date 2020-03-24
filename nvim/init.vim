@@ -3,6 +3,8 @@
 nnoremap ; :
 "Insert line below by Enter
 nmap <CR> o<Esc>
+"Remap Tab to Esc
+imap <Tab> <Esc>
 "Relative numbering
 function! NumberToggle()
   if(&relativenumber == 1)
@@ -35,14 +37,22 @@ autocmd BufNewFile *.tex 0read ~/.config/nvim/templates/skeleton.tex
 "Compilation
 Plug 'lervag/vimtex' , { 'for':'tex'}
 let g:tex_flavor='latex'
+if has('mac')
+let g:vimtex_view_method='skim'
+elseif has('unix')
 let g:vimtex_view_method='zathura'
+endif
 let g:vimtex_quickfix_mode=0
 let g:vimtex_compiler_progname='nvr'
 let g:vimtex_fold_enabled = 1 "Folding
 "Live Preview
 Plug 'xuhdev/vim-latex-live-preview' ", { 'for': 'tex' }
 autocmd Filetype tex setl updatetime=1000 " setting update interval
+if has('mac')
+let g:livepreview_previewer = 'open -a Skim' "use Skim
+elseif has('unix')
 let g:livepreview_previewer = 'zathura' "use Skim
+endif
 "autocmd BufReadPost,BufNewFile *.tex :LLPStartPreview<CR>  "Autostart Live preview on first write to tex file
 "autocmd BufEnter,BufNewFile *.tex :VimtexCompile<CR> "Autostart Live preview on first write to tex file
 "Better concealment
@@ -98,21 +108,7 @@ let g:airline_theme =   'onedark'
 
 " Initialize plugin system
 call plug#end()
-
-" onedark.vim override: Don't set a background color when running in a terminal;
-" just use the terminal's background color
-" `gui` is the hex color code used in GUI mode/nvim true-color mode
-" `cterm` is the color code used in 256-color mode
-" `cterm16` is the color code used in 16-color mode
-if (has("autocmd") && !has("gui_running"))
-  augroup colorset
-    autocmd!
-    let s:white = { "gui": "#ABB2BF", "cterm": "145", "cterm16" : "7" }
-    autocmd ColorScheme * call onedark#set_highlight("Normal", { "fg": s:white }) " `bg` will not be styled since there is no `bg` setting
-  augroup END
-endif
 colorscheme onedark "Change theme
-
 syntax on "Turn on syntax highlighting
 call deoplete#custom#var ('omni', 'input_patterns', { 'tex': g:vimtex#re#deoplete, 'r': '[^. *\t]\.\w*', }) "Use deoplete with vimtex
 
