@@ -47,7 +47,7 @@ let g:vimtex_fold_enabled = 1 "Folding
 Plug 'xuhdev/vim-latex-live-preview' ", { 'for': 'tex' }
 autocmd Filetype tex setl updatetime=1000 " setting update interval
 if has('mac')
-let g:livepreview_previewer = 'open -a Skim' "use Skim
+let g:livepreview_previewer = 'zathura' " 'open -a Skim' use Skim
 elseif has('unix')
 let g:livepreview_previewer = 'zathura' "use Skim
 endif
