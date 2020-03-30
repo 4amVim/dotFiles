@@ -35,11 +35,11 @@ autocmd BufNewFile *.tex 0read ~/.config/nvim/templates/skeleton.tex
 "Compilation
 Plug 'lervag/vimtex' , { 'for':'tex'}
 let g:tex_flavor='latex'
-if has('mac')
-let g:vimtex_view_method='skim'
-elseif has('unix')
+"if has('mac')
+"let g:vimtex_view_method='skim'
+"elseif has('unix')
 let g:vimtex_view_method='zathura'
-endif
+"endif
 let g:vimtex_quickfix_mode=0
 let g:vimtex_compiler_progname='nvr'
 let g:vimtex_fold_enabled = 1 "Folding
