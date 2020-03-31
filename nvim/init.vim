@@ -94,7 +94,7 @@ let g:airline_theme =   'onedark'
 
 "Better Registers
 Plug 'junegunn/vim-peekaboo'
-let g:peekaboo_compact = 1
+"let g:peekaboo_compact = 1
 let g:peekaboo_window = 'bo 30new'
 
 "Git integration
@@ -108,6 +108,8 @@ let g:peekaboo_window = 'bo 30new'
 "Plug 'konfekt/fastfold'
 "set foldmethod=syntax
 "let g:tex_fold_enabled =1
+" Space will toggle folds!
+ nnoremap <space> za
 
 " Initialize plugin system
 call plug#end()
