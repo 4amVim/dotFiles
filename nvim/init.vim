@@ -92,6 +92,11 @@ let g:airline_right_alt_sep = '|'
 let g:airline_powerline_fonts = 1
 let g:airline_theme =   'onedark'
 
+"Better Registers
+Plug 'junegunn/vim-peekaboo'
+let g:peekaboo_compact = 1
+let g:peekaboo_window = 'bo 30new'
+
 "Git integration
 "Plug 'tpope/vim-fugitive'
 
