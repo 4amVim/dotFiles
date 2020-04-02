@@ -21,6 +21,8 @@ set statusline+=%F "display filepath in status bar
 "More natural splits
 set splitbelow          " Horizontal split below current.
 set splitright          " Vertical split to right of current.
+"Display vertical column
+set cc=100
 
 ""Vim-Plug
 "Set plugin directory for vim-plug:
