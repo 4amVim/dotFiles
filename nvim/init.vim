@@ -1,6 +1,10 @@
 ""Essentials
+"Normal mappings
 "Start commands with ; rather than :
 nnoremap ; :
+"Terminal mappings
+"Use Esc to go back to normal mode
+tnoremap <esc> <c-\><c-n>
 "Insert line below by Enter
 nmap <CR> o<Esc>
 "Relative numbering
