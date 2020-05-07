@@ -145,7 +145,12 @@ snippet 1_B "identity on B" i
 endsnippet
 
 snippet nattran "Natural transformation	"
-
+	\begin{tikzcd}[row sep=large, column sep=huge]
+\mathcal{ ${1:First category}} \arrow[r,bend left=50, "${2:First functor}"{name=U, below}]
+\arrow[r, bend right = 50, "${3:Second functor}"{name=D, above}]
+& ${4:Second category}
+\arrow[Rightarrow, from=U , to=D, "${5:natural transformation}"]
+	\end{tikzcd}
 endsnippet
 	
 
