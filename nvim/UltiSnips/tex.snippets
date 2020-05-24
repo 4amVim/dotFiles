@@ -68,6 +68,7 @@ endsnippet
 
 snippet % "comment"
 %{{{ ${1:${VISUAL:Name}}		${2:${VISUAL:Type}}$0
+%}}}
 endsnippet
 
 snippet enumi "enumerate i ii" bA
@@ -137,6 +138,9 @@ endsnippet
 snippet Ac "category A" iA
 \mathcal{A} $0
 endsnippet
+snippet Cc "category A" iA
+\mathcal{C} $0
+endsnippet
 snippet Bc "category B" iA
 \mathcal{B} $0
 endsnippet
@@ -174,9 +178,19 @@ G($2) \arrow[swap]{r}{${5:functor2}($1)}
 endsnippet
 #Commutative Diagrams
 snippet aro "Draw an arrow"
-\arrow{${1:direction}}{${2:map name}} $0
+\arrow[${1:direction}, "${2:map name}"] $0
 endsnippet
 
 snippet arod "Draw diagonal arrow"
 \arrow[swap]{${1:direction}}{${2:map name}} $0
+endsnippet
+
+#Yoneda
+
+snippet ha "A(_,A)"
+H_A 
+endsnippet
+
+snippet catpresheaf "[A op,Set]" iA
+[ \mathcal{A}^{op},Set] 
 endsnippet
