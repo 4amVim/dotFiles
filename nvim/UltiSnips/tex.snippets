@@ -12,13 +12,13 @@ snippet beg "begin{} / end{}" bA
 \end{$1}
 endsnippet
 
-snippet [ "Math" wA
+snippet [ "Math" A
 \[ $1 \] $0
 endsnippet
 
 #General Math stuff
 
-snippet o "compose "
+snippet 0 "compose " i
 \circ $0
 endsnippet
 
@@ -71,13 +71,13 @@ snippet % "comment"
 %}}}
 endsnippet
 
-snippet enumi "enumerate i ii" bA
-\begin{enumerate}[label=\roman*]
+snippet enumi "enumerate i ii"
+\begin{enumerate}[label=(\roman*)]
 	\item $1 
 \end{enumerate}$0
 endsnippet
 
-snippet enuma "enumerate a b" bA
+snippet enuma "enumerate a b"
 	\begin{enumerate}[label=(\alph*)]
 		\item $1 
 	\end{enumerate}$0
@@ -193,4 +193,44 @@ endsnippet
 
 snippet catpresheaf "[A op,Set]" iA
 [ \mathcal{A}^{op},Set] 
+endsnippet
+
+#Thesis
+snippet cto "promodule arrow" iA
+\carrow 
+endsnippet
+	
+snippet f* "contravariant functor" iA
+f^* 
+endsnippet
+
+snippet ff "covariant functor" wA
+f_* 
+endsnippet
+
+snippet fo "f op" i
+f^o 
+endsnippet
+	
+snippet g* "contravariant functor" iA
+g^* 
+endsnippet
+
+snippet gg "covariant functor" wA
+g_* 
+endsnippet
+
+snippet go "g op" i
+g^o 
+endsnippet
+snippet par "line broken paragraph"
+\paragraph{$1} \mbox{} \\
+$0
+endsnippet
+
+snippet \inc "inclusion" iA
+\subseteq 
+endsnippet
+snippet \onc "reverse inclusion" iA
+\supseteq 
 endsnippet
