@@ -2,6 +2,8 @@
 "Normal mappings
 "Start commands with ; rather than :
 nnoremap ; :
+" make Y consistent with C and D.
+nnoremap Y y$
 "Terminal mappings
 "Use Esc to go back to normal mode
 tnoremap <esc> <c-\><c-n>
