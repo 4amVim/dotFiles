@@ -45,6 +45,8 @@ map <Leader>wh <C-w>t<C-w>K
 set fillchars+=vert:\ 
 
 
+"Code Basics
+command! MakeTags !ctags -R
 
 "Display vertical column
 set cc=100
