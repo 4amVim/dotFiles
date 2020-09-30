@@ -68,6 +68,11 @@ call plug#begin(stdpath('data').'/plugged')
 ""Rust
 Plug 'rust-lang/rust.vim'
 
+""Python
+"Execute current script without saving
+autocmd FileType python map <buffer> <F9> :w !python<CR>
+autocmd FileType python imap <buffer> <F9> <esc> :w !python<CR>
+
 ""LaTeX Stuff
 "Load the tex template if it's a new file
 autocmd BufNewFile *.tex 0read ~/.config/nvim/templates/skeleton.tex
