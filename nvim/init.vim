@@ -1,4 +1,9 @@
 ""Essentials
+set hidden
+"lowercase for insensitive search, but upper for sensitive 
+set ignorecase
+set smartcase
+
 "Normal mappings
 "Start commands with ; rather than :
 nnoremap ; :
