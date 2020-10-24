@@ -1,3 +1,7 @@
+if has('win32')
+    let g:python3_host_prog='C:\Users\icebear\miniconda3\envs\lit\python.exe'
+    let g:python_host_prog='C:\Users\icebear\miniconda3\envs\lit\python.exe'
+endif
 ""Essentials
 set hidden
 "lowercase for insensitive search, but upper for sensitive 
@@ -93,7 +97,7 @@ let g:vimtex_quickfix_mode=0
 let g:vimtex_compiler_progname='nvr'
 let g:vimtex_fold_enabled = 1 "Folding
 "Live Preview
-Plug 'xuhdev/vim-latex-live-preview' ", { 'for': 'tex' }
+Plug 'xuhdev/vim-latex-live-preview' , { 'for': 'tex' }
 autocmd Filetype tex setl updatetime=1000 " setting update interval
 if has('mac')
 let g:livepreview_previewer = 'open -a Skim' "use Skim
@@ -178,7 +182,7 @@ endif
 colorscheme onedark "Change theme
 syntax on "Turn on syntax highlighting
 filetype plugin indent on
-call deoplete#custom#var ('omni', 'input_patterns', { 'tex': g:vimtex#re#deoplete, 'r': '[^. *\t]\.\w*', }) "Use deoplete with vimtex
+"call deoplete#custom#var ('omni', 'input_patterns', { 'tex': g:vimtex#re#deoplete, 'r': '[^. *\t]\.\w*', }) "Use deoplete with vimtex
 
 "Auto closing brackets
 "inoremap {<CR> {<CR>}<Esc>ko<tab>
