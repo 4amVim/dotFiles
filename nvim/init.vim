@@ -144,6 +144,9 @@ let g:airline_right_sep = ' '
 let g:airline_right_alt_sep = '|'
 let g:airline_powerline_fonts = 1
 let g:airline_theme =   'onedark'
+if has('win32')
+let g:airline_theme =   'minimalist'
+endif
 let g:airline_section_warning = ''
 
 "Better Registers
