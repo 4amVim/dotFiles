@@ -8,6 +8,13 @@ set hidden
 set ignorecase
 set smartcase
 
+""Sessions
+"""check out https://dockyard.com/blog/2018/06/01/simple-vim-session-management-part-1
+let g:session_dir = 'C:\Users\icebear\miniconda3\envs\Repos\sessions'
+exec 'nnoremap <Leader>ss :mks! ' . g:session_dir . '/*.vim<C-D><BS><BS><BS><BS><BS>'
+exec 'nnoremap <Leader>sr :so ' . g:session_dir. '/*.vim<C-D><BS><BS><BS><BS><BS>'
+
+
 "Normal mappings
 "Start commands with ; rather than :
 nnoremap ; :
@@ -77,10 +84,6 @@ call plug#begin(stdpath('data').'/plugged')
 ""Rust
 Plug 'rust-lang/rust.vim'
 
-""Python
-"Execute current script without saving
-autocmd FileType python map <buffer> <F9> :w !python<CR>
-autocmd FileType python imap <buffer> <F9> <esc> :w !python<CR>
 
 ""LaTeX Stuff
 "Load the tex template if it's a new file
@@ -120,17 +123,20 @@ let g:UltiSnipsJumpForwardTrigger = '<tab>'
 let g:UltiSnipsJumpBackwadTrigger = '<tab>'
 let g:UltiSnipsEditSplit="vertical"
 
-"Completion via deoplete
+""Completion via deoplete
 Plug 'shougo/deoplete.nvim'
 let g:deoplete#enable_at_startup=1 "Use Deoplete
+"Use deoplete with vimtex
+"call deoplete#custom#var ('omni', 'input_patterns', { 'tex': g:vimtex#re#deoplete, 'r': '[^. *\t]\.\w*', }) 
 
-"Theming
+""Theming
 Plug 'joshdick/onedark.vim' "OneDark Theme
 
 ""Startup screen
 Plug 'mhinz/vim-startify'
+let g:startify_session_dir = 'C:\Users\icebear\miniconda3\envs\Repos\sessions'
 
-"Airline
+""Airline
 Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes'
 "let g:airline#extensions#tabline#enabled = 2
 let g:airline#extensions#tabline#fnamemod = ':t'
@@ -149,10 +155,68 @@ let g:airline_theme =   'minimalist'
 endif
 let g:airline_section_warning = ''
 
-"Better Registers
+""Registers
+"can't work without this one
 Plug 'junegunn/vim-peekaboo'
 "let g:peekaboo_compact = 1
 let g:peekaboo_window = 'bo 30new'
+
+"Supertab
+Plug 'ervandew/supertab'
+
+"Command-T
+
+"Python
+"""check out https://www.vimfromscratch.com/articles/vim-for-python/
+Plug 'numirias/semshi'
+Plug 'jiangmiao/auto-pairs'
+au BufNewFile,BufRead *.py
+    \ set expandtab       |" replace tabs with spaces
+    \ set autoindent      |" copy indent when starting a new line
+    \ set tabstop=4
+    \ set softtabstop=4
+    \ set shiftwidth=4
+
+
+"Need folding, let's have it indent based
+au BufNewFile,BufRead *.py set foldmethod=indent
+
+"Execute current script without saving
+autocmd FileType python map <buffer> <F9> :w !python3_host_prog<CR>
+autocmd FileType python imap <buffer> <F9> <esc> :w !python3_host_prog<CR>
+
+
+"Linting
+Plug 'dense-analysis/ale'
+"Analysis
+let g:ale_linters = {'python': ['flake8', 'pylint'],}
+",
+"      \   'ruby': ['standardrb', 'rubocop'],
+"      \   'javascript': ['eslint'],
+"      \}
+"Fixing
+let g:ale_fixers = { 'python': ['yapf'],}
+nmap <F10> :ALEFix<CR>
+let g:ale_fix_on_save = 1
+"Show total in statusline
+function! LinterStatus() abort
+  let l:counts = ale#statusline#Count(bufnr(''))
+
+  let l:all_errors = l:counts.error + l:counts.style_error
+  let l:all_non_errors = l:counts.total - l:all_errors
+
+  return l:counts.total == 0 ? '✨ all good ✨' : printf(
+	\   'damn: %dW %dE',
+        \   all_non_errors,
+        \   all_errors
+        \)
+endfunction
+
+set statusline=
+set statusline+=%m
+set statusline+=\ %f
+set statusline+=%=
+set statusline+=\ %{LinterStatus()}
 
 "Git integration
 "Plug 'tpope/vim-fugitive'
@@ -167,6 +231,8 @@ let g:peekaboo_window = 'bo 30new'
 "let g:tex_fold_enabled =1
 " Space will toggle folds!
  nnoremap <space> za
+
+
 
 " Initialize plugin system
 call plug#end()
@@ -185,8 +251,13 @@ endif
 colorscheme onedark "Change theme
 syntax on "Turn on syntax highlighting
 filetype plugin indent on
-"call deoplete#custom#var ('omni', 'input_patterns', { 'tex': g:vimtex#re#deoplete, 'r': '[^. *\t]\.\w*', }) "Use deoplete with vimtex
+
+"deoplete settings
+
+
 
 "Auto closing brackets
 "inoremap {<CR> {<CR>}<Esc>ko<tab>
 "inoremap (<CR> (<CR>)<Esc>ko<tab>
+
+autocmd User Startified setlocal cursorline
