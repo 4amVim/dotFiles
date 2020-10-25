@@ -87,34 +87,35 @@ Plug 'rust-lang/rust.vim'
 
 ""LaTeX Stuff
 "Load the tex template if it's a new file
-autocmd BufNewFile *.tex 0read ~/.config/nvim/templates/skeleton.tex
-"Compilation
-Plug 'lervag/vimtex' , { 'for':'tex'}
-let g:tex_flavor='latex'
-if has('mac')
-let g:vimtex_view_method='skim'
-elseif has('unix')
-let g:vimtex_view_method='zathura'
-endif
-let g:vimtex_quickfix_mode=0
-let g:vimtex_compiler_progname='nvr'
-let g:vimtex_fold_enabled = 1 "Folding
-"Live Preview
-Plug 'xuhdev/vim-latex-live-preview' , { 'for': 'tex' }
-autocmd Filetype tex setl updatetime=1000 " setting update interval
-if has('mac')
-let g:livepreview_previewer = 'open -a Skim' "use Skim
-elseif has('unix')
-let g:livepreview_previewer = 'zathura' "use Skim
-endif
-"autocmd BufReadPost,BufNewFile *.tex :LLPStartPreview<CR>  "Autostart Live preview on first write to tex file
-"autocmd BufEnter,BufNewFile *.tex :VimtexCompile<CR> "Autostart Live preview on first write to tex file
-"Better concealment
-Plug 'PietroPate/tex-conceal.vim', { 'for':'tex'}
-set conceallevel=2
-let g:tex_conceal='abdgms'
-
-autocmd BufWritePre *.tex %s/\s\+$//e "automatically remove white spaces on save (only on .tex files)
+"""""""""|Don't need LaTeX for now
+""""""""""autocmd BufNewFile *.tex 0read ~/.config/nvim/templates/skeleton.tex
+"""""""""""Compilation
+""""""""""Plug 'lervag/vimtex' , { 'for':'tex'}
+""""""""""let g:tex_flavor='latex'
+""""""""""if has('mac')
+""""""""""let g:vimtex_view_method='skim'
+""""""""""elseif has('unix')
+""""""""""let g:vimtex_view_method='zathura'
+""""""""""endif
+""""""""""let g:vimtex_quickfix_mode=0
+""""""""""let g:vimtex_compiler_progname='nvr'
+""""""""""let g:vimtex_fold_enabled = 1 "Folding
+"""""""""""Live Preview
+""""""""""Plug 'xuhdev/vim-latex-live-preview' , { 'for': 'tex' }
+""""""""""autocmd Filetype tex setl updatetime=1000 " setting update interval
+""""""""""if has('mac')
+""""""""""let g:livepreview_previewer = 'open -a Skim' "use Skim
+""""""""""elseif has('unix')
+""""""""""let g:livepreview_previewer = 'zathura' "use Skim
+""""""""""endif
+"""""""""""autocmd BufReadPost,BufNewFile *.tex :LLPStartPreview<CR>  "Autostart Live preview on first write to tex file
+"""""""""""autocmd BufEnter,BufNewFile *.tex :VimtexCompile<CR> "Autostart Live preview on first write to tex file
+"""""""""""Better concealment
+""""""""""Plug 'PietroPate/tex-conceal.vim', { 'for':'tex'}
+""""""""""set conceallevel=2
+""""""""""let g:tex_conceal='abdgms'
+""""""""""
+""""""""""autocmd BufWritePre *.tex %s/\s\+$//e "automatically remove white spaces on save (only on .tex files)
 
 ""Snippets
 Plug 'sirver/ultisnips' | Plug 'honza/vim-snippets'
@@ -122,12 +123,6 @@ let g:UltiSnipsExpandTrigger = '<tab>'
 let g:UltiSnipsJumpForwardTrigger = '<tab>'
 let g:UltiSnipsJumpBackwadTrigger = '<tab>'
 let g:UltiSnipsEditSplit="vertical"
-
-""Completion via deoplete
-Plug 'shougo/deoplete.nvim'
-let g:deoplete#enable_at_startup=1 "Use Deoplete
-"Use deoplete with vimtex
-"call deoplete#custom#var ('omni', 'input_patterns', { 'tex': g:vimtex#re#deoplete, 'r': '[^. *\t]\.\w*', }) 
 
 ""Theming
 Plug 'joshdick/onedark.vim' "OneDark Theme
@@ -169,6 +164,7 @@ Plug 'ervandew/supertab'
 "Python
 """check out https://www.vimfromscratch.com/articles/vim-for-python/
 Plug 'numirias/semshi'
+let g:semshi#error_sign_delay=5
 Plug 'jiangmiao/auto-pairs'
 au BufNewFile,BufRead *.py
     \ set expandtab       |" replace tabs with spaces
@@ -182,9 +178,8 @@ au BufNewFile,BufRead *.py
 au BufNewFile,BufRead *.py set foldmethod=indent
 
 "Execute current script without saving
-autocmd FileType python map <buffer> <F9> :w !python3_host_prog<CR>
-autocmd FileType python imap <buffer> <F9> <esc> :w !python3_host_prog<CR>
-
+autocmd FileType python map <buffer> <F9> :w !C:\Users\icebear\miniconda3\envs\lit\python.exe<CR>
+autocmd FileType python imap <buffer> <F9> <esc> :w !C:\Users\icebear\miniconda3\envs\lit\python.exe<CR>
 
 "Linting
 Plug 'dense-analysis/ale'
@@ -206,7 +201,7 @@ function! LinterStatus() abort
   let l:all_non_errors = l:counts.total - l:all_errors
 
   return l:counts.total == 0 ? '✨ all good ✨' : printf(
-	\   'damn: %dW %dE',
+	\   '❌: %dW %dE',
         \   all_non_errors,
         \   all_errors
         \)
@@ -218,7 +213,21 @@ set statusline+=\ %f
 set statusline+=%=
 set statusline+=\ %{LinterStatus()}
 
-"Git integration
+""Completion via deoplete
+Plug 'shougo/deoplete.nvim'
+let g:deoplete#enable_at_startup=1 "1 "Use Deoplete
+"Use deoplete with vimtex
+"call deoplete#custom#var ('omni', 'input_patterns', { 'tex': g:vimtex#re#deoplete, 'r': '[^. *\t]\.\w*', }) 
+"Great overall plugin, gives you signatures while typing, jump to definitions etc
+Plug 'davidhalter/jedi-vim'
+let g:jedi#use_splits_not_buffers = "left"
+"But deoplete for completion because asynchronous
+Plug 'deoplete-plugins/deoplete-jedi'
+let g:jedi#completions_enabled = 0 
+"Integrate with ALE??
+"call deoplete#custom#option('sources', {'_': ['ale',],}) "'deoplete-jedi'],})
+
+""Git integration
 "Plug 'tpope/vim-fugitive'
 
 "autosave??
@@ -252,7 +261,6 @@ colorscheme onedark "Change theme
 syntax on "Turn on syntax highlighting
 filetype plugin indent on
 
-"deoplete settings
 
 
 
