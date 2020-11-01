@@ -181,6 +181,11 @@ au BufNewFile,BufRead *.py set foldmethod=indent
 autocmd FileType python map <buffer> <F9> :w !C:\Users\icebear\miniconda3\envs\lit\python.exe<CR>
 autocmd FileType python imap <buffer> <F9> <esc> :w !C:\Users\icebear\miniconda3\envs\lit\python.exe<CR>
 
+"Julia
+Plug 'JuliaEditorSupport/julia-vim'  " , { 'for':'jl'} Don't do ,{for,'jl'} docs explicitly recommend against it
+Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'bash install.sh'}
+
+
 "Linting
 Plug 'dense-analysis/ale'
 "Analysis
@@ -245,6 +250,30 @@ let g:jedi#completions_enabled = 0
 
 " Initialize plugin system
 call plug#end()
+
+" julia
+let g:default_julia_version = '1.5.2'
+
+" language server
+let g:LanguageClient_autoStart = 1
+let g:LanguageClient_serverCommands = {
+\   'julia': ['julia', '--startup-file=no', '--history-file=no', '-e', '
+\       using LanguageServer;
+\       using Pkg;
+\       import StaticLint;
+\       import SymbolServer;
+\       env_path = dirname(Pkg.Types.Context().env.project_file);
+\       
+\       server = LanguageServer.LanguageServerInstance(stdin, stdout, env_path, "");
+\       server.runlinter = true;
+\       run(server);
+\   ']
+\ }
+
+nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
+nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
+
 " onedark.vim override: Don't set a background color when running in a terminal;
 " just use the terminal's background color
 " `gui` is the hex color code used in GUI mode/nvim true-color mode
