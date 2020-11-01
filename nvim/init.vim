@@ -185,6 +185,10 @@ autocmd FileType python imap <buffer> <F9> <esc> :w !C:\Users\icebear\miniconda3
 Plug 'JuliaEditorSupport/julia-vim'  " , { 'for':'jl'} Don't do ,{for,'jl'} docs explicitly recommend against it
 Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'bash install.sh'}
 
+Plug 'Shougo/echodoc.vim'
+set cmdheight=2
+let g:echodoc#enable_at_startup = 1
+let g:echodoc#type = 'signature'
 
 "Linting
 Plug 'dense-analysis/ale'
@@ -249,6 +253,10 @@ let g:jedi#completions_enabled = 0
 
 " Initialize plugin system
 call plug#end()
+
+call deoplete#custom#source('LanguageClient',
+            \ 'min_pattern_length',
+            \ 2)
 
 " julia
 let g:default_julia_version = '1.5.2'
