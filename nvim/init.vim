@@ -189,9 +189,8 @@ Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'bash install.sh
 "Linting
 Plug 'dense-analysis/ale'
 "Analysis
-let g:ale_linters = {'python': ['flake8', 'pylint'],}
-",
-"      \   'ruby': ['standardrb', 'rubocop'],
+let g:ale_linters = {'python': ['flake8', 'pylint'],
+      \   'julia': ['LanguageServer'],}
 "      \   'javascript': ['eslint'],
 "      \}
 "Fixing
