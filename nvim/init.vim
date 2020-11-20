@@ -60,6 +60,10 @@ map <Leader>wh <C-w>t<C-w>K
 " Removes pipes | that act as seperators on splits
 set fillchars+=vert:\ 
 
+" Use Shift+Arrow to scroll
+map <S-Down> <C-E>
+map <S-Up> <C-Y>
+
 
 "Code Basics
 command! MakeTags !ctags -R
