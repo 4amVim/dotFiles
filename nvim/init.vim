@@ -17,7 +17,7 @@ exec 'nnoremap <Leader>sr :so ' . g:session_dir. '/*.vim<C-D><BS><BS><BS><BS><BS
 
 "Normal mappings
 "Start commands with ; rather than :
-nnoremap ; :
+"nnoremap ; : "Remember, ;. repeats last motion
 " make Y consistent with C and D.
 nnoremap Y y$
 "Terminal mappings
@@ -203,7 +203,7 @@ let g:ale_linters = {'python': ['flake8', 'pylint'],
 "      \}
 "Fixing
 let g:ale_fixers = { 'python': ['yapf'],}
-nmap <F10> :ALEFix<CR>
+nmap <F9> :ALEFix<CR>
 let g:ale_fix_on_save = 1
 "Show total in statusline
 function! LinterStatus() abort
