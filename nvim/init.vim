@@ -185,9 +185,13 @@ au BufNewFile,BufRead *.py set foldmethod=indent
 autocmd FileType python map <buffer> <F10> :w !C:\Users\icebear\miniconda3\envs\lit\python.exe<CR>
 autocmd FileType python imap <buffer> <F10> <esc> :w !C:\Users\icebear\miniconda3\envs\lit\python.exe<CR>
 
+"SLIME
+Plug 'jpalardy/vim-slime'
+let g:slime_target="neovim"
+
 "Julia
 Plug 'JuliaEditorSupport/julia-vim'  " , { 'for':'jl'} Don't do ,{for,'jl'} docs explicitly recommend against it
-Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'bash install.sh'}
+"Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'bash install.sh'}
 
 Plug 'Shougo/echodoc.vim'
 set cmdheight=2
