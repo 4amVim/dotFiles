@@ -20,7 +20,7 @@ exec 'nnoremap <Leader>sr :so ' . g:session_dir. '/*.vim<C-D><BS><BS><BS><BS><BS
 
 "Normal mappings
 "Start commands with ; rather than :
-nnoremap ; :
+"nnoremap ; : "Remember, ;. repeats last motion
 " make Y consistent with C and D.
 nnoremap Y y$
 "Terminal mappings
@@ -62,6 +62,10 @@ map <Leader>wv <C-w>t<C-w>H
 map <Leader>wh <C-w>t<C-w>K
 " Removes pipes | that act as seperators on splits
 set fillchars+=vert:\ 
+
+" Use Shift+Arrow to scroll
+map <S-Down> <C-E>
+map <S-Up> <C-Y>
 
 
 "Code Basics
@@ -181,12 +185,16 @@ au BufNewFile,BufRead *.py
 au BufNewFile,BufRead *.py set foldmethod=indent
 
 "Execute current script without saving
-autocmd FileType python map <buffer> <F9> :w !C:\Users\icebear\miniconda3\envs\lit\python.exe<CR>
-autocmd FileType python imap <buffer> <F9> <esc> :w !C:\Users\icebear\miniconda3\envs\lit\python.exe<CR>
+autocmd FileType python map <buffer> <F10> :w !C:\Users\icebear\miniconda3\envs\lit\python.exe<CR>
+autocmd FileType python imap <buffer> <F10> <esc> :w !C:\Users\icebear\miniconda3\envs\lit\python.exe<CR>
+
+"SLIME
+Plug 'jpalardy/vim-slime'
+let g:slime_target="neovim"
 
 "Julia
 Plug 'JuliaEditorSupport/julia-vim'  " , { 'for':'jl'} Don't do ,{for,'jl'} docs explicitly recommend against it
-Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'bash install.sh'}
+"Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'bash install.sh'}
 
 Plug 'Shougo/echodoc.vim'
 set cmdheight=2
@@ -202,7 +210,7 @@ let g:ale_linters = {'python': ['flake8', 'pylint'],
 "      \}
 "Fixing
 let g:ale_fixers = { 'python': ['yapf'],}
-nmap <F10> :ALEFix<CR>
+nmap <F9> :ALEFix<CR>
 let g:ale_fix_on_save = 1
 "Show total in statusline
 function! LinterStatus() abort
