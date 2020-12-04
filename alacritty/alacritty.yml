@@ -386,10 +386,10 @@
 #   - (macOS) /bin/bash --login
 #   - (Linux/BSD) user login shell
 #   - (Windows) powershell
-  shell:
-    program: cmd.exe
-    args:
-            - /s /k pushd C:\Users\icebear\miniconda3\envs\Repos
+#  shell:
+#    program: cmd.exe
+#    args:
+#            - /s /k pushd C:\Users\icebear\miniconda3\envs\Repos
 
 # Startup directory
 #
