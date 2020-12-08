@@ -184,7 +184,8 @@ au BufNewFile,BufRead *.py
 "Need folding, let's have it indent based
 "au BufNewFile,BufRead *.py set foldmethod=indent
 "Lets Try plugins
-Plug 'tmhedberg/SimpylFold'
+Plug 'kalekundert/vim-coiled-snake'
+Plug 'Konfekt/FastFold'
 
 "Execute current script without saving
 autocmd FileType python map <buffer> <F10> :w !C:\Users\icebear\miniconda3\envs\lit\python.exe<CR>
