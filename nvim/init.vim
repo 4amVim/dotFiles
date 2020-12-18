@@ -201,6 +201,8 @@ Plug 'JuliaEditorSupport/julia-vim'  " , { 'for':'jl'} Don't do ,{for,'jl'} docs
 
 "Dart
 Plug 'dart-lang/dart-vim-plugin'
+let g:dart_style_guide = 1
+let g:dart_format_on_save = 1 "Hmmmmmmmm should I keep this ??
 Plug 'thosakwe/vim-flutter'
 
 Plug 'tpope/vim-fugitive'
