@@ -199,6 +199,12 @@ let g:slime_target="neovim"
 Plug 'JuliaEditorSupport/julia-vim'  " , { 'for':'jl'} Don't do ,{for,'jl'} docs explicitly recommend against it
 "Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'bash install.sh'}
 
+"Dart
+Plug 'dart-lang/dart-vim-plugin'
+Plug 'thosakwe/vim-flutter'
+
+Plug 'tpope/vim-fugitive'
+
 Plug 'Shougo/echodoc.vim'
 set cmdheight=2
 let g:echodoc#enable_at_startup = 1
