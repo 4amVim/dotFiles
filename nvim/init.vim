@@ -201,9 +201,13 @@ Plug 'JuliaEditorSupport/julia-vim'  " , { 'for':'jl'} Don't do ,{for,'jl'} docs
 
 "Dart
 Plug 'dart-lang/dart-vim-plugin'
+let dart_html_in_string=v:true
+
 let g:dart_style_guide = 1
-let g:dart_format_on_save = 1 "Hmmmmmmmm should I keep this ??
+let g:dart_format_on_save = 0 "Hmmmmmmmm should I keep this ??
 Plug 'thosakwe/vim-flutter'
+
+Plug 'Yggdroot/indentLine' 
 
 Plug 'tpope/vim-fugitive'
 
