@@ -206,6 +206,7 @@ let dart_html_in_string=v:true
 let g:dart_style_guide = 1
 let g:dart_format_on_save = 0 "Hmmmmmmmm should I keep this ??
 Plug 'thosakwe/vim-flutter'
+au BufNewFile,BufRead *.dart set foldmethod=indent
 
 Plug 'Yggdroot/indentLine' 
 
