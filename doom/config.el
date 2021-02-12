@@ -110,4 +110,36 @@
 ;          (lambda ()
 ;            (add-hook 'after-save-hook 'auto-reload nil 'make-it-local)))
 
+;Trying to fix lsp
 (add-to-list 'default-frame-alist '(inhibit-double-buffering . t))
+(setq gc-cons-threshold 1000000000)
+
+ ;; Never ding at me, ever.
+   ring-bell-function 'ignore
+   ;; Prompts should go in the minibuffer, not in a GUI.
+   use-dialog-box nil
+(setq
+ make-backup-files nil
+ auto-save-default nil
+ create-lockfiles nil)
+(setq custom-file (make-temp-file ""))
+(setq custom-safe-themes t)
+(unbind-key "C-x C-f") ;; find-file-read-only
+(unbind-key "C-x C-d") ;; list-directory
+(unbind-key "C-z") ;; suspend-frame
+(unbind-key "M-o") ;; facemenu-mode
+(unbind-key "<mouse-2>") ;; pasting with mouse-wheel click
+(add-hook 'before-save-hook #'delete-trailing-whitespace)
+(setq require-final-newline t)
+
+(ignore-errors (set-frame-font "Menlo-14"))
+(use-package all-the-icons)
+(use-package all-the-icons-dired
+  :after all-the-icons
+  :hook (dired-mode . all-the-icons-dired-mode))
+
+(when (window-system)
+  (tool-bar-mode -1)
+  (scroll-bar-mode -1)
+  (tooltip-mode -1))
+(add-to-list 'default-frame-alist '(fullscreen . maximized))
