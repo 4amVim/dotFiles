@@ -1,0 +1,94 @@
+{
+    "editor.quickSuggestions": {"other": true,"strings": true,
+        "comments": true,
+    },
+    "julia.enableTelemetry": true,
+    "workbench.colorTheme": "Default Dark+",
+    "terminal.integrated.shell.windows": "C:\\Windows\\System32\\cmd.exe",
+    "gitlens.currentLine.enabled": false,
+    "gitlens.hovers.currentLine.over": "line",
+    "gitlens.codeLens.enabled": false,
+    "gitlens.statusBar.enabled": false,
+    "dart.previewLsp": true,
+    "[dart]": {
+        "editor.formatOnSave": true,
+        "editor.formatOnType": true,
+        "editor.rulers": [
+            80
+        ],
+        "editor.selectionHighlight": false,
+        "editor.suggest.snippetsPreventQuickSuggestions": false,
+        "editor.suggestSelection": "first",
+        "editor.tabCompletion": "onlySnippets",
+        "editor.wordBasedSuggestions": false,
+        "editor.defaultFormatter": "Dart-Code.dart-code"
+    },
+    "dart.debugExternalLibraries": false,
+    "dart.debugSdkLibraries": false,
+    "terminal.integrated.commandsToSkipShell": [
+        "language-julia.interrupt"
+    ],
+    "git.autofetch": true,
+    "editor.quickSuggestionsDelay": 0,
+    "editor.suggest.localityBonus": true,
+    "workbench.sideBar.location": "right",
+    "vim.gdefault": true,
+    "dart.flutterRunAdditionalArgs": [
+        "--no-sound-null-safety"
+    ],
+    "dart.env": {},
+    "settingsSync.ignoredSettings": [
+        "debug.toolBarLocation",
+        "editor.fontFamily",
+        "editor.fontSize"
+    ],
+    "touchBar.foldAll": true,
+    "touchBar.goToReferences": true,
+    "touchBar.extensions": false,
+    "touchBar.scm": false,
+    "touchBar.terminal": true,
+    "touchBar.toggleZenMode": false,
+    "touchBar.search": false,
+    "touchBar.closeOtherEditors": false,
+    "touchBar.copyLinesDownAction": false,
+    "git.enableSmartCommit": true,
+    "editor.fontFamily": "Fira Code",
+    "editor.fontLigatures": true,
+    "editor.fontWeight": "100",
+    "todo-tree.tree.showScanModeButton": false,
+    "files.autoSave": "afterDelay",
+    "files.autoSaveDelay": 500,
+    "dart.previewHotReloadOnSaveWatcher": true,
+    "workbench.startupEditor": "welcomePage",
+    "editor.formatOnSave": true,
+    "debug.console.fontSize": 12,
+    "vim.easymotion": true,
+    "terminal.integrated.fontSize": 12,
+    "vim.foldfix": true,
+    "dart.flutterHotReloadOnSave": "always",
+    "vim.handleKeys": {
+        "<C-k>":true,
+        "<C-c>": true,
+        "<C-v>": true,
+        "<C-w>": true,
+    },
+    "vim.camelCaseMotion.enable": true,
+    "vim.normalModeKeyBindings": [
+        {
+            "before": ["W"],
+            "after": ["<leader>","w"],
+        },
+        {
+            "before": ["<space>"],
+            "after": ["z","a"],
+        },
+    ],
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": ["b"],
+            "after": ["<leader>","b"],
+        },
+    ],
+    "editor.suggest.shareSuggestSelections": true,
+    "editor.suggest.showStatusBar": true,
+}
