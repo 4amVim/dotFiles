@@ -1,5 +1,6 @@
-# Hello there!
+# Hi there!
 
-These are my humble dotfiles. They work across major OSes, and are geared towards `Python`,`LaTeX and `Julia` in that order.
+These are my humble dotfiles. They're geared towards macOS and Windows, and for using Python, LaTeX, Julia and Flutter in that order.
 
-If they are of any use to you, remember to smile!
+I suggest you use sparse checkouts to utilise them, 
+[here's a working example](https://gist.github.com/4amVim/09761b02d1827a36328189d4593645d3#getting-cozy-with-sparse-checkouts).
