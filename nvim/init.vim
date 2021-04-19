@@ -2,8 +2,8 @@ if has('win32')
     let g:python3_host_prog='C:\Users\icebear\miniconda3\envs\lit\python.exe'
     let g:python_host_prog='C:\Users\icebear\miniconda3\envs\lit\python.exe'
 elseif has('mac')
-    let g:python3_host_prog='/Users/polynya/miniconda3/bin/python'
-    let g:python_host_prog='/Users/polynya/miniconda3/bin/python'
+    let g:python3_host_prog='/usr/bin/python3'
+    let g:python_host_prog='/usr/bin/python3'
 endif
 ""Essentials
 set hidden
